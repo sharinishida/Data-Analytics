@@ -1,0 +1,24 @@
+· GITIGNORE
+# Large dataset files — download from Kaggle directly
+reviews_0-250.csv
+reviews_250-500.csv
+reviews_500-750.csv
+reviews_750-1250.csv
+reviews_1250-end.csv
+ 
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+ 
+# OS
+.DS_Store
+Thumbs.db
+ 
+# Jupyter
+*.ipynb
+ 
+# Environment
+.env
+venv/
