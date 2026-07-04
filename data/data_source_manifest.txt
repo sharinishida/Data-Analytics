@@ -1,0 +1,69 @@
+================================================================================
+ENTERPRISE DATA SOURCE MANIFEST & SCHEMA ARCHITECTURE
+Project: Supply Chain Resiliency & Margin Protection in Prestige Beauty
+Framework: Correlation One Data Analytics Capstone Portfolio
+================================================================================
+
+1. PRIMARY TRANSACTIONAL DATASET: UPSTREAM SUPPLY CHAIN & LOGISTICS
+--------------------------------------------------------------------------------
+* Source: Kaggle Supply Chain Operations & Logistics Matrix (Anonymized Global Enterprise)
+* Data Footprint: Core operational tracking log containing logistical milestones.
+* Relational Role: Serves as the Master Ledger for physical inventory movement.
+
+Key Features & Database Fields Tracked:
+- Product Details: SKU IDs, core product categories (Cosmetics, Haircare, Skincare).
+- Cost Structures: Baseline manufacturing costs, freight costs, and inventory values.
+- Operational Nodes: Supplier IDs (Mapping Supplier 1 through Supplier 5).
+- Quality Metrics: Batch inspection pass/fail records, customer defect percentages.
+- Logistics Variables: Order quantities, historical stock levels, shipping modes (Air, Road, Rail, Sea).
+- Lead Time Metrics: Scheduled supplier lead times vs. actual carrier delivery lead times.
+
+Strategic Utility:
+Used to isolate critical bottleneck variables, compute lead-time planning variances, 
+and flag severe supplier quality failures (such as the 66.7% inspection failure 
+rate isolated on Supplier 4).
+
+
+2. CONSUMER SENTIMENT DATASET: DOWNSTREAM DEMAND-SENSING REGISTRY
+--------------------------------------------------------------------------------
+* Source: Kaggle Sephora Products and Consumer Reviews Database
+* Data Footprint: 1.09 Million rows of historical customer transaction & review logs.
+* Relational Role: Serves as the real-time marketplace demand proxy.
+
+Key Features & Database Fields Tracked:
+- Product Registry: 12,000+ distinct Sephora SKUs, brand mappings, and ingredients.
+- Market Metrics: Retail prices, primary categories, popularity scores, and online love counts.
+- Consumer Sentiment: 1.09M rows of text reviews, star ratings, and transactional timestamps.
+- Temporal Anchors: Review submission years and months (used to model velocity trends).
+
+Strategic Utility:
+By processing 1.09 million consumer interaction timestamps, this dataset is 
+transformed into an active "demand-sensing" signal. It allows an S&OP planning 
+team to predict inventory depletion on store shelves up to 30 days before a 
+traditional warehouse stockout appears on the ledger.
+
+
+3. ENGINEERED CROSS-DATASET INTEGRATION (DATA BRIDGE LOGIC)
+--------------------------------------------------------------------------------
+Because raw public datasets lack native corporate integration keys, the following 
+enterprise data architectural strategies were deployed to bridge the data:
+
+A. The Category Bridge Key:
+   An explicit relational bridge was built using SQL to join the operational 
+   Supply Chain table with the 1.09M-row Sephora table at the product category 
+   level (Cosmetics, Haircare, Skincare). This allows upstream logistics parameters 
+   to dynamically adjust based on downstream consumer review velocity.
+
+B. Structural Attribute Proxy Strategy (Geopolitical Risk Mitigation):
+   To model global macro trade risk without explicit origin tracking codes, 
+   a dynamic "Tariff Impact Coefficient" was engineered directly into the data 
+   schema based on product types. This provides the C-suite with a functional 
+   CFO simulation tool to model a 25% margin compression penalty across high-risk 
+   imported cosmetic SKUs.
+
+C. Null Value Remediation & Data Governance:
+   Heavy database cleaning routines dropped corrupt, non-reporting fields 
+   (such as 'value_price_usd' which carried a >94% null rate) to ensure absolute 
+   data integrity before pushing the final data payload into Tableau executive 
+   visualization environments.
+================================================================================
