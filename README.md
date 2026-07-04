@@ -117,5 +117,5 @@ scipy>=1.9.0
 
 Managing Director, NexGen Consulting, LLC. Specializing in business transformation, legacy system modernization, and data governance across Fortune 500 clients and government agencies. This project combines 20+ years of enterprise ERP configuration and supply chain consulting with modern cloud analytics to demonstrate how external data signals can drive real-time decision-making across global supply networks.
 
-- **Core Strengths:** Strategy, Digital Transformation, ERP Integration, and Executive Advising.
-- **Certifications:** PMP, PMI-ACP, CSM, Oracle Cloud AI, McKinsey Forward.
+- **Core Strengths:** Strategy, Digital Transformation, ERP Integration, and Executive Advising
+- **Certifications:** PMP, PMI-ACP, CSM, Oracle Cloud AI
